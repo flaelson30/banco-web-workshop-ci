@@ -1,0 +1,31 @@
+name: Workshop CI Mentoria
+
+on:
+    workflow_dispatch 
+
+jobs:
+    tests:
+    #configuração do sistema operacional (Mac/Windows/Linux/etc)
+    
+    runs-on: ubuntu-latest:
+    
+    env: 
+      API_BASE_URL: 'http://localhost:3000'
+      PORT: 4000
+      
+    steps: 
+    - name: Clone do projeto
+      uses: actions/checkout@v4.4.0
+      
+    - name: Intalando deps do projeto 
+      run: npm install
+      
+    - name: Iniciando servidor de mock
+      run: npm run mock-server
+      
+    - name: Iniciando servidor da aplicacao 
+      run: npm rum server
+
+    - name: Eecutando os testes E2E do projeto
+      run: npx 
+    
