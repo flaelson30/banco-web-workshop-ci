@@ -7,7 +7,7 @@ on:
 jobs:
   tests:
     # [config do sistema operacional] (mac/windows/linux/etc)
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-24.04
     
     # [variaveis] (de ambiente, chaves de acesso)
     env:
@@ -23,9 +23,9 @@ jobs:
         run: npm install
     # [acoes para verificar regras/políticas] (cobertura de código, formatacao, testes ui/e2e/unit/etc.)
       - name: Iniciando servidor de mock
-        run: npm run mock-server
+        run: npm run mock-server &
       - name: Iniciando servidor da aplicacao
-        run: npm run server
+        run: npm run server &
       - name: Executando os testes e2e do projeto
         run: npx cypress run
     
